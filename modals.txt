@@ -1,0 +1,99 @@
+largeContentModal
+    data-content: Données à afficher en agrandi
+
+searchModal GET /recherche
+
+sellModal PUT /definitives
+    data-vehicle:
+    data-plate
+    data-vehicle-price: Prix initial du véhicule
+    data-sell-tax: Taxe de vente (70% aujourd'hui)
+
+proprietarizeModal PUT /definitives
+    data-vehicle
+    data-owner
+    data-plate
+
+addImmDefModal POST /definitives
+    data-vehicle: Flord;Utility;Vert
+    data-owner: Thomas;Blinders
+    data-plate: AB-123-CD
+    data-comment: Commentaire
+
+editImmDefModal PUT /definitives
+    data-vehicle
+    data-owner
+    data-plate: important (clef primaire)
+    data-comment
+    data-vehicle-price: Prix initial du véhicule
+    data-imm-tax: Taxe d'immatriculation (3% aujourd'hui)
+
+deindexImmDefModal DELETE /definitives
+    data-vehicle
+    data-owner
+    data-plate: important (clef primaire)
+
+addBailModal POST /cautions
+    data-vehicle
+    data-owner
+    data-plate
+    data-vehicle-price: Prix initial du véhicule
+    data-imm-tax: Taxe d'immatriculation (3% aujourd'hui)
+    data-bail-tax: Taxe de caution (15% aujourd'hui)
+
+editBailModal PUT /cautions
+    data-vehicle
+    data-owner
+    data-plate
+    data-bail-id: Identifiant de la caution (clef primaire)
+    data-vehicle-price
+    data-bail-tax: Taxe de caution (15% aujourd'hui)
+    data-bail-price: Prix de caution récupéré
+
+deindexBailModal DELETE /cautions
+    data-bail-id: Identifiant de la caution (clef primaire)
+
+TODO addPoundModal POST /pound
+    data-pound-id: clef primaire
+    data-vehicle
+    data-owner
+    data-plate
+    data-place: Lieu
+    data-reason: Raison
+    data-comment
+
+editPoundModal PUT /pound
+    data-pound-id
+    data-vehicle
+    data-owner
+    data-plate
+    data-place: Lieu
+    data-reason: Raison
+    data-comment
+
+deindexPoundModal DELETE /pound
+    data-pound-id
+    data-vehicle
+    data-owner
+    data-plate
+
+TODO addImmTempModal POST /temporaires
+    data-vehicle
+    data-owner
+    data-plate
+    data-comment
+    data-duration
+
+TODO editImmTempModal PUT /temporaires
+    data-vehicle
+    data-owner
+    data-plate
+    data-comment
+    data-duration
+
+TODO deindexImmTempModal
+    data-vehicle
+    data-owner
+    data-plate: important (clef primaire)
+
+    

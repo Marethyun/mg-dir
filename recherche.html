@@ -329,12 +329,30 @@
                                     <div class="form-group">
                                         <label for="category">Catégorie</label>
                                         <select class="form-control" name="category">
-                                            <option value="immdef">Immatriculations définitives</option>
-                                            <option value="immtmp">Immatriculations temporaires</option>
-                                            <option value="sold">Ventes</option>
+                                            <option value="pound">Toutes</option>
                                             <option value="pound">Fourrière</option>
+                                            <option value="sellables">Coucessionnaire</option>
+                                            <option value="immtmp">Immatriculations temporaires</option>
+                                            <option value="immdef">Immatriculations définitives</option>
+                                            <option value="sold">Ventes</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="element">Élément recherché</label>
+                                        <select class="form-control" name="element">
+                                            <option value="whatever">Peu importe</option>
+                                            <option value="imm">Plaque</option>
+                                            <option value="player">Joueur</option>
+                                            <option value="dir">agent</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <!-- JUST FOR SPACING -->
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
@@ -733,30 +751,6 @@
                     </div>
                     <div class="modal-body">
                         <form>
-                            <!-- BEGIN IMM DEF REQUIRED PRICE -->
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="from-group">
-                                        <label for="percentage">Taux d'immatriculation</label>
-                                        <input class="form-control" type="text" name="percentage" value="3%" readonly>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="price">Prix d'immatriculation</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
-                                            </div>
-                                            <input class="form-control" type="text" name="price" value="300" placeholder="Prix">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">€</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END IMM DEF REQUIRED PRICE -->
                             <div class="form-row">
                                 <div class="col">
                                     <div class="from-group">
@@ -779,23 +773,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- BEGIN REQUIRED TOTAL -->
-                            <div class="form-row">
-                                <!-- SPACING -->
-                                <div class="col" role="separator"></div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="price">Prix total</label>
-                                        <div class="input-group">
-                                            <input class="form-control" type="text" name="price" value="2300" placeholder="Prix" readonly>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">€</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END REQUIRED TOTAL -->
                         </form>
                     </div>
                     <div class="modal-footer">
