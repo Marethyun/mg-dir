@@ -27,7 +27,7 @@
                         <div class="collapse navbar-collapse" id="navcontent">
                             <ul class="navbar-nav mr-auto">
                                 <!-- RECHERCHE -->
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link" href="#">Rechercher</a>
                                 </li>
                                 <!-- HANGAR -->
@@ -41,7 +41,7 @@
                                     </div>
                                 </li>
                                 <!-- IMMATRICULATION -->
-                                <li class="nav-item active dropdown">
+                                <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="ddImmatriculation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Immatriculation
                                     </a>
@@ -128,10 +128,11 @@
 
             <!-- BEGIN PAGE TITLE -->
             <div class="row">
-                <div class="col-lg-12 mb-4">
+                <div class="col-lg-12">
                     <!-- PAGE TITLE -->
                     <h1 class="h3 text-center p-2 bg-light">
                         Rechercher
+                        <button class="btn btn-secondary btn-sm rounded-circle" type="button" rel="tooltip" data-placement="right" title="Rechercher" data-toggle="modal" data-target="#searchModal"><i class="fas fa-search"></i></button>
                     </h1>
                     <!-- END PAGE TITLE -->
                 </div>
@@ -150,6 +151,7 @@
                                 <th scope="col">Date</th>
                                 <th scope="col">Propriétaire</th>
                                 <th scope="col">Véhicule</th>
+                                <th scope="col">Prix</th>
                                 <th scope="col">Commentaire</th>
                                 <th scope="col"></th>
                             </thead>
@@ -160,12 +162,13 @@
                                     <td><a href="#" class="silent-link">08 mai 2019</a></td>
                                     <td><a href="#" class="silent-link">Alex Kingsmann</a></td>
                                     <td><a href="#" class="silent-link">Flord Utility (Noir)</a></td>
+                                    <td>300€</td>
                                     <td><em>Aucun commentaire</em></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editModal" title="Éditer"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editImmDefModal" title="Éditer"><i class="fas fa-edit"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#sellModal" title="Vendre"><i class="fas fa-credit-card"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexImmDefModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -190,7 +193,6 @@
                                 <th scope="col">Créancier</th>
                                 <th scope="col">Véhicule</th>
                                 <th scope="col">Caution</th>
-                                <th scope="col">Commentaire</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -201,11 +203,10 @@
                                     <td><a href="#" class="silent-link">Alex Kingsmann</a></td>
                                     <td><a href="#" class="silent-link">Flord Utility (Noir)</a></td>
                                     <td>4500€</td>
-                                    <td><em>Aucun commentaire</em></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editModal" title="Éditer"><i class="fas fa-edit"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editBailModal" title="Éditer"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexBailModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -246,9 +247,10 @@
                                     <td><a href class="silent-link" data-toggle="modal" data-target="#largeContentModal" data-content="Roues manquantes, grosse fumée noire.">Roues manqua...</a></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editModal" title="Éditer"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editPoundModal" title="Éditer"><i class="fas fa-edit"></i></button>
                                             <button type="button" class="btn btn-info btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#proprietarizeModal" title="Propriétariser"><i class="fas fa-dolly-flatbed"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
+                                            <button type="button" class="btn btn-warning btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#addBailModal" title="Caution"><i class="fas fa-credit-card"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexPoundModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -263,11 +265,10 @@
                                     <td><a href class="silent-link" data-toggle="modal" data-target="#largeContentModal" data-content="Roues manquantes, grosse fumée noire.">Roues manqua...</a></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editModal" title="Éditer"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editPoundModal" title="Éditer"><i class="fas fa-edit"></i></button>
                                             <button type="button" class="btn btn-info btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#proprietarizeModal" title="Propriétariser"><i class="fas fa-dolly-flatbed"></i></button>
-
-                                            <button type="button" class="btn btn-warning btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#bailModal" title="Caution"><i class="fas fa-credit-card"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
+                                            <button type="button" class="btn btn-warning btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#addBailModal" title="Caution"><i class="fas fa-credit-card"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexPoundModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -281,7 +282,7 @@
         </main>
         <!-- END MAIN -->
 
-        <!-- LARGE CONTENT MODAL -->
+        <!-- BEGIN LARGE CONTENT MODAL -->
         <div class="modal fade" id="largeContentModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -309,7 +310,690 @@
                 </div>
             </div>
         </div>
-        <!-- LARGE CONTENT MODAL -->
+        <!-- END LARGE CONTENT MODAL -->
+
+        <!-- BEGIN SEARCH MODAL -->
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Rechercher</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="category">Catégorie</label>
+                                        <select class="form-control" name="category">
+                                            <option value="immdef">Immatriculations définitives</option>
+                                            <option value="immtmp">Immatriculations temporaires</option>
+                                            <option value="sold">Ventes</option>
+                                            <option value="pound">Fourrière</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="search">Rechercher</label>
+                                        <input class="form-control" type="text" name="search" placeholder="Rechercher...">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-secondary">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SEARCH MODAL -->
+
+        <!-- BEGIN ADD IMM DEF MODAL -->
+        <div class="modal fade" id="addImmDefModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Immatriculer un véhicule</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="code">#</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="code" placeholder="AB-123-CD" />
+                                            <div class="input-group-append">
+                                                <button type="button" rel="tooltip" data-placement="bottom" title="Générer" class="btn btn-secondary"><i class="fas fa-random"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="ownerFirst">Prénom</label>
+                                        <input class="form-control" type="text" name="ownerFirst" placeholder="John" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="ownerLast">Nom</label>
+                                        <input class="form-control" type="text" name="ownerLast" placeholder="Doe" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="vehicleType">Type de véhicule</label>
+                                        <select class="form-control" name="vehicleType" placeholder="Marque et modèle">
+                                            <option value="860">Audi V10</option>
+                                            <option value="887">Flord Utility</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="vehicleColor">Couleur</label>
+                                        <select class="form-control" name="vehicleColor" placeholder="Couleur">
+                                            <option value="Rouge">Rouge</option>
+                                            <option value="Noir">Noir</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="comment">Commentaire</label>
+                                        <textarea class="form-control no-resize" name="comment" rows="3" placeholder="Commentaire"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux d'immatriculation</label>
+                                        <input class="form-control" type="text" name="percentage" value="3%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix d'immatriculation</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="300" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <!-- BUTTON SAVE -->
+                        <button type="button" class="btn btn-success">Immatriculer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END ADD IMM DEF MODAL -->
+
+        <!-- BEGIN EDIT IMM MODAL -->
+        <div class="modal fade" id="editImmDefModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Éditer Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="code">#</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="code" placeholder="AB-123-CD" value="GN-317-AK" />
+                                            <div class="input-group-append">
+                                                <button type="button" rel="tooltip" data-placement="bottom" title="Générer" class="btn btn-secondary"><i class="fas fa-random"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="ownerFirst">Prénom</label>
+                                        <input class="form-control" type="text" name="ownerFirst" placeholder="John" value="Alex" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="ownerLast">Nom</label>
+                                        <input class="form-control" type="text" name="ownerLast" placeholder="Doe" value="Kingsmann" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="vehicleType">Type de véhicule</label>
+                                        <select class="form-control" name="vehicleType">
+                                            <option value="860">Audi V10</option>
+                                            <option value="887" selected>Flord Utility</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="vehicleColor">Couleur</label>
+                                        <select class="form-control" name="vehicleColor">
+                                            <option value="Rouge">Rouge</option>
+                                            <option value="Noir" selected>Noir</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="comment">Commentaire</label>
+                                        <textarea class="form-control no-resize" name="comment" rows="3" placeholder="Commentaire"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux d'immatriculation</label>
+                                        <input class="form-control" type="text" name="percentage" value="3%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix d'immatriculation</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="300" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <!-- BUTTON SAVE -->
+                        <button type="button" class="btn btn-primary">Sauvegarder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END EDIT IMM MODAL -->
+
+        <!-- BEGIN DEINDEX IMM DEF MODAL -->
+        <div class="modal fade" id="deindexImmDefModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Déindexer Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir désindexer le véhicule immatriculé <samp>GN-317-AK</samp> ?</p>
+                        <p>Une telle manipulation est <strong>irréversible</strong> et entraîne la suppression de toutes les entrées correspondantes.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-danger">Désindexer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END DEINDEX IMM DEF MODAL -->
+
+        <!-- BEGIN ADD BAIL MODAL -->
+        <div class="modal fade" id="addBailModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Caution de Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- BEGIN DEFINITIVE REQUIRED -->
+                        <h2 class="h5 mb-4">Immatriculation nécessaire</h1>
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="code">#</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="code" placeholder="AB-123-CD" />
+                                            <div class="input-group-append">
+                                                <button type="button" rel="tooltip" data-placement="bottom" title="Générer" class="btn btn-secondary"><i class="fas fa-random"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="ownerFirst">Prénom</label>
+                                        <input class="form-control" type="text" name="ownerFirst" placeholder="John" />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="ownerLast">Nom</label>
+                                        <input class="form-control" type="text" name="ownerLast" placeholder="Doe" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="vehicleType">Type de véhicule</label>
+                                        <select class="form-control" name="vehicleType" placeholder="Marque et modèle">
+                                            <option value="860">Audi V10</option>
+                                            <option value="887">Flord Utility</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="vehicleColor">Couleur</label>
+                                        <select class="form-control" name="vehicleColor" placeholder="Couleur">
+                                            <option value="Rouge">Rouge</option>
+                                            <option value="Noir">Noir</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="comment">Commentaire</label>
+                                        <textarea class="form-control no-resize" name="comment" rows="3" placeholder="Commentaire"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END DEFINITIVE REQUIRED -->
+                        <h2 class="h5 mb-4">Modalités de caution</h2>
+                        <form>
+                            <!-- BEGIN IMM DEF REQUIRED PRICE -->
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux d'immatriculation</label>
+                                        <input class="form-control" type="text" name="percentage" value="3%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix d'immatriculation</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="300" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END IMM DEF REQUIRED PRICE -->
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux de caution</label>
+                                        <input class="form-control" type="text" name="percentage" value="15%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix de la caution</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="2000" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BEGIN REQUIRED TOTAL -->
+                            <div class="form-row">
+                                <!-- SPACING -->
+                                <div class="col" role="separator"></div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix total</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="price" value="2300" placeholder="Prix" readonly>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END REQUIRED TOTAL -->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <!-- BUTTON SELL -->
+                        <button type="button" class="btn btn-warning">Caution</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END ADD BAIL MODAL -->
+
+        <!-- BEGIN EDIT BAIL MODAL -->
+        <div class="modal fade" id="editBailModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Éditer la Caution de Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <!-- BEGIN IMM DEF REQUIRED PRICE -->
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux d'immatriculation</label>
+                                        <input class="form-control" type="text" name="percentage" value="3%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix d'immatriculation</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="300" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END IMM DEF REQUIRED PRICE -->
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux de caution</label>
+                                        <input class="form-control" type="text" name="percentage" value="15%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix de la caution</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="2000" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BEGIN REQUIRED TOTAL -->
+                            <div class="form-row">
+                                <!-- SPACING -->
+                                <div class="col" role="separator"></div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix total</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="price" value="2300" placeholder="Prix" readonly>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END REQUIRED TOTAL -->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <!-- BUTTON SELL -->
+                        <button type="button" class="btn btn-primary">Éditer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END EDIT BAIL MODAL -->
+
+        <!-- BEGIN DEINDEX BAIL MODAL -->
+        <div class="modal fade" id="deindexBailModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Désindexer la caution de Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir désindexer cette caution ?
+                        <p>Une telle manipulation est <strong>irréversible</strong> et entraîne la suppression de toutes les entrées correspondantes.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-danger">Désindexer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END DEINDEX BAIL MODAL -->
+
+        <!-- BEGIN EDIT POUND MODAL -->
+        <div class="modal fade" id="editPoundModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Éditer la mise en fourrière de Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="place">Lieu</label>
+                                        <textarea class="form-control no-resize" name="place" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="reason">Raison</label>
+                                        <textarea class="form-control no-resize" name="reason" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="comment">Commentaire</label>
+                                        <textarea class="form-control no-resize" name="comment" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <!-- BUTTON SELL -->
+                        <button type="button" class="btn btn-primary">Éditer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END EDIT POUND MODAL -->
+
+        <!-- BEGIN DEINDEX POUND MODAL -->
+        <div class="modal fade" id="deindexPoundModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Désindexer la mise en fourrière de Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir désindexer cette mise en fourrière ?
+                        <p>Une telle manipulation est <strong>irréversible</strong> et entraîne la suppression de toutes les entrées correspondantes.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-danger">Désindexer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END DEINDEX POUND MODAL -->
+
+        <!-- BEGIN SELL MODAL -->
+        <div class="modal fade" id="sellModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Vendre Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 class="h5 mb-4">Formulaire de réindexation</h1>
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newOwnerFirst">Prénom</label>
+                                        <input class="form-control" type="text" name="newOwnerFirst" placeholder="Nouveau prénom">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newOwnerLast">Nom</label>
+                                        <input class="form-control" type="text" name="newOwnerLast" placeholder="Nouveau nom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="comment">Commentaire</label>
+                                        <textarea class="form-control no-resize" name="comment" rows="3" placeholder="Commentaire"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <h2 class="h5 mb-4">Modalités de vente</h2>
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux</label>
+                                        <input class="form-control" type="text" name="percentage" value="70%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="21200" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <!-- BUTTON SELL -->
+                        <button type="button" class="btn btn-success">Vendre</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SELL MODAL -->
+
+        <!-- PROPRIETARIZE MODAL -->
+        <div class="modal fade" id="proprietarizeModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Propriétariser Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir propriétariser le véhicule immatriculé <samp>GN-317-AK</samp> ?</p>
+                        <p>Cette action relève simplement d'une modification des champs propriétaire du véhicule en <samp>Concessionnaire DIR</samp></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-info">Propriétariser</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROPRIETARIZE MODAL -->
 
         <!-- BEGIN FOOTER -->
         <footer class="footer">

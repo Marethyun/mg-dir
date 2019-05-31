@@ -120,7 +120,7 @@
                     <h1 class="h3 text-center p-2 bg-light">
                         Immatriculations définitives
                         <!-- ADD BUTTON -->
-                        <button type="button" rel="tooltip" data-placement="right" title="Ajouter" data-toggle="modal" data-target="#addModal" class="btn btn-success btn-sm rounded-circle"><i class="fas fa-plus"></i></button>
+                        <button type="button" rel="tooltip" data-placement="right" title="Ajouter" data-toggle="modal" data-target="#addImmDefModal" class="btn btn-success btn-sm rounded-circle"><i class="fas fa-plus"></i></button>
                         <!-- END ADD BUTTON -->
                     </h1>
                     <!-- END PAGE TITLE -->
@@ -139,6 +139,7 @@
                                 <th scope="col">Date</th>
                                 <th scope="col">Propriétaire</th>
                                 <th scope="col">Véhicule</th>
+                                <th scope="col">Prix</th>
                                 <th scope="col">Commentaire</th>
                                 <th scope="col"></th>
                             </thead>
@@ -149,12 +150,13 @@
                                     <td><a href="#" class="silent-link">08 mai 2019</a></td>
                                     <td><a href="#" class="silent-link">Alex Kingsmann</a></td>
                                     <td><a href="#" class="silent-link">Flord Utility (Noir)</a></td>
+                                    <td>300€</td>
                                     <td><em>Aucun commentaire</em></td>
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editModal" title="Éditer"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editImmDefModal" title="Éditer"><i class="fas fa-edit"></i></button>
                                             <button type="button" class="btn btn-success btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#sellModal" title="Vendre"><i class="fas fa-credit-card"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#deindexImmDefModal" title="Désindexer"><i class="fas fa-dumpster"></i></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -167,8 +169,8 @@
         </main>
         <!-- END MAIN -->
 
-        <!-- ADD MODAL -->
-        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- BEGIN ADD IMM DEF MODAL -->
+        <div class="modal fade" id="addImmDefModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -194,7 +196,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="ownerFirst">Prénom</label>
-                                        <input class="form-control" type="text" name="ownerFirst" placeholder="John" value="Alex" />
+                                        <input class="form-control" type="text" name="ownerFirst" placeholder="John" />
                                     </div>
                                 </div>
                                 <div class="col">
@@ -232,6 +234,28 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux d'immatriculation</label>
+                                        <input class="form-control" type="text" name="percentage" value="3%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix d'immatriculation</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="300" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -242,10 +266,10 @@
                 </div>
             </div>
         </div>
-        <!-- END ADD MODAL -->
+        <!-- END ADD IMM DEF MODAL -->
 
-        <!-- EDIT MODAL -->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- BEGIN EDIT IMM MODAL -->
+        <div class="modal fade" id="editImmDefModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -309,6 +333,28 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="from-group">
+                                        <label for="percentage">Taux d'immatriculation</label>
+                                        <input class="form-control" type="text" name="percentage" value="3%" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price">Prix d'immatriculation</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="button" rel="tooltip" title="Appliquer taux" data-placement="bottom" class="btn btn-secondary"><i class="fas fa-calculator"></i></button>
+                                            </div>
+                                            <input class="form-control" type="text" name="price" value="300" placeholder="Prix">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">€</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -319,9 +365,32 @@
                 </div>
             </div>
         </div>
-        <!-- END EDIT MODAL -->
+        <!-- END EDIT IMM MODAL -->
 
-        <!-- SELL MODAL -->
+        <!-- BEGIN DEINDEX IMM MODAL -->
+        <div class="modal fade" id="deindexImmDefModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Déindexer Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir désindexer le véhicule immatriculé <samp>GN-317-AK</samp> ?</p>
+                        <p>Une telle manipulation est <strong>irréversible</strong> et entraîne la suppression de toutes les entrées correspondantes.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-danger">Désindexer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END DEINDEX IMM MODAL -->
+
+        <!-- BEGIN SELL MODAL -->
         <div class="modal fade" id="sellModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
                 <div class="modal-content">
@@ -392,36 +461,6 @@
             </div>
         </div>
         <!-- END SELL MODAL -->
-
-        <!-- DEINDEXING MODAL -->
-        <div class="modal fade" id="deindexModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="h5 modal-title">Déindexer Flord Utility - Noir (<samp>GN-317-AK</samp>)</h1>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Êtes-vous certain(e) de vouloir désindexer le véhicule immatriculé <samp>GN-317-AK</samp> ?</p>
-                        <p>Une telle manipulation est irréversible et entraîne la suppression de toutes les entrées correspondantes.</p>
-                        <p><strong>Pour valider votre opération, inscrivez le numéro d'immatriculation dans le champ ci-dessous.</strong></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-                        <div class="input-group w-50">
-                            <input class="form-control" type="text" placeholder="Plaque">
-                            <div class="input-group-append">
-                                <!-- BUTTON DEINDEX -->
-                                <button type="button" class="btn btn-danger" disabled>Désindexer</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END DEINDEXING MODAL -->
 
         <!-- BEGIN FOOTER -->
         <footer class="footer">
