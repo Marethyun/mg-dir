@@ -110,13 +110,14 @@ resetPasswordModal PUT /membres
     data-memberid
     data-username
 
-enableModal PUT /membres
+enableMemberModal PUT /membres
     data-memberid
     data-username
 
-disableModal PUT /membres
+disableMemberModal PUT /membres
     data-memberid
     data-username
 
 TODO addVehicleModal
-    data-vehicle
+
+TODO deindexVehicl
