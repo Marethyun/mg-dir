@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>🚧 D.I.R. Master</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+        <script type="text/javascript" src="js/tooltip.js"></script>
+    </head>
+    <body>
+        <!-- BEGIN MAIN -->
+        <main class="container" role="main">
+            <!-- BEGIN NAVBAR -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="#">
+                            🚧 D.I.R. Master
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navcontent" aria-controls="navcontent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navcontent">
+                            <ul class="navbar-nav mr-auto">
+                                <!-- RECHERCHE -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Rechercher</a>
+                                </li>
+                                <!-- HANGAR -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="ddHangar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Hangar
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="ddHangar">
+                                        <a class="dropdown-item" href="#">Fourrière</a>
+                                        <a class="dropdown-item" href="#">Concessionnaire</a>
+                                    </div>
+                                </li>
+                                <!-- IMMATRICULATION -->
+                                <li class="nav-item active dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="ddImmatriculation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Immatriculation
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="ddImmatriculation">
+                                        <a class="dropdown-item" href="#">Temporaire</a>
+                                        <a class="dropdown-item" href="#">Définitive</a>
+                                    </div>
+                                </li>
+                                <!-- SORTIES -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="ddSorties" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Sorties
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="ddSorties">
+                                        <a class="dropdown-item" href="#">Cautions</a>
+                                        <a class="dropdown-item" href="#">Ventes</a>
+                                    </div>
+                                </li>
+                                <!-- ADMINISTRATION -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="ddAdministration" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Administration
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="ddImmatriculation">
+                                        <a class="dropdown-item" href="#">Membres</a>
+                                        <a class="dropdown-item" href="#">Trésorerie</a>
+                                        <a class="dropdown-item" href="#">Statistiques</a>
+                                        <a class="dropdown-item" href="#">Types de véhicules</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item mr-2">
+                                    <a class="nav-link" href="#">Profil</a>
+                                </li>
+                            </ul>
+                            <form class="form-inline">
+                                <button type="button" class="btn btn-sm align-middle btn-danger">Déconnexion</button>
+                            </form>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- END NAVBAR -->
+
+            <!-- BEGIN #permError : Just insert at reload because the error come from BE -->
+            <div class="row">
+                <div class="col-lg-12 mt-2">
+                    <div id="permError" class="alert alert-danger alert-dismissible show fade" role="alert">
+                        <strong>Erreur</strong> Vous n'avez pas la permission de faire ça...
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- END #permError -->
+
+            <!-- BEGIN #successPopup : Just insert at reload because the error come from BE -->
+            <div class="row">
+                <div class="col-lg-12 mt-2">
+                    <div id="successPopup" class="alert alert-success alert-dismissible show fade" role="alert">
+                        <strong>Succès !</strong> L'opération a été réussie avec brio.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- END #successPopup -->
+
+            <!-- BEGIN PAGE TITLE -->
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <!-- PAGE TITLE -->
+                    <h1 class="h3 text-center p-2 bg-light">
+                        Membres
+                        <!-- ADD BUTTON -->
+                        <button type="button" rel="tooltip" data-placement="right" title="Ajouter" data-toggle="modal" data-target="#addMemberModal" class="btn btn-success btn-sm rounded-circle"><i class="fas fa-plus"></i></button>
+                        <!-- END ADD BUTTON -->
+                    </h1>
+                    <!-- END PAGE TITLE -->
+                </div>
+            </div>
+            <!-- END PAGE TITLE -->
+
+            <!-- BEGIN DATA -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-fit">
+                            <thead>
+                                <th scope="col">Pseudo</th>
+                                <th scope="col">Nom en jeu</th>
+                                <th scope="col">Permissions</th>
+                                <th scope="col">Réinitialisé</th>
+                                <th scope="col">Désactivé</th>
+                                <th scope="col"></th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><samp>marethyun</samp></td>
+                                    <td><a href="#" class="silent-link">Mare Ethnicus</a></td>
+                                    <td><samp>ffffffff</samp></td>
+                                    <td>oui</td>
+                                    <td>non</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editMemberModal" title="Éditer"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#disableModal" title="Désactiver"><i class="fas fa-user-times"></i></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><samp>pelegrino</samp></td>
+                                    <td><a href="#" class="silent-link">Jean Pelegrino</a></td>
+                                    <td><samp>fffffc30</samp></td>
+                                    <td>non</td>
+                                    <td>oui</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn btn-primary btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#editMemberModal" title="Éditer"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-warning btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#resetPasswordModal" title="Réinitialiser MDP"><i class="fas fa-key"></i></button>
+                                            <button type="button" class="btn btn-success btn-sm" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#enableModal" title="Activer"><i class="fas fa-user-check"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END DATA -->
+        </main>
+        <!-- END MAIN -->
+
+        <!-- BEGIN ADD MEMBER MODAL -->
+        <div class="modal fade" id="addMemberModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Ajouter un utilisateur</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="username">Nom d'utilisateur</label>
+                                        <input class="form-control" type="text" name="username" placeholder="Pseudo">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="password">Mot de passe</label>
+                                        <input class="form-control" type="text" name="password" placeholder="Mot de passe">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="first">Prénom en jeu</label>
+                                        <input class="form-control" type="text" name="first" placeholder="John">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="last">Nom en jeu</label>
+                                        <input class="form-control" type="text" name="last" placeholder="Doe">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <h2 class="h5 mb-4">Permissions</h2>
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="permissions">Permissions</label>
+                                        <input class="form-control" type="text" name="permissions" placeholder="c8c88003">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="admin">Admin</label>
+                                    <button name="admin" class="form-control btn btn-secondary" type="button">ffffffff</button>
+                                </div>
+                                <div class="col">
+                                    <label for="experimented">Expérimenté</label>
+                                    <button name="experimented" class="form-control btn btn-secondary" type="button">fffff00f</button>
+                                </div>
+                                <div class="col">
+                                    <label for="novice">Novice</label>
+                                    <button name="novice" class="form-control btn btn-secondary" type="button">c8c88003</button>
+                                </div>
+                                <div class="col">
+                                    <label for="gendarme">Gendarme</label>
+                                    <button name="gendarme" class="form-control btn btn-secondary" type="button">08800080</button>
+                                </div>
+                                <div class="col">
+                                    <label for="seeall">Voir tout</label>
+                                    <button name="seeall" class="form-control btn btn-secondary" type="button">8888888b</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Fourrière</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewPound">
+                                        <label class="custom-control-label" for="viewPound">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addPound">
+                                        <label class="custom-control-label" for="addPound">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editPound">
+                                        <label class="custom-control-label" for="editPound">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexPound">
+                                        <label class="custom-control-label" for="deindexPound">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Définitives</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewDefinitives">
+                                        <label class="custom-control-label" for="viewDefinitives">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addDefinitives">
+                                        <label class="custom-control-label" for="addDefinitives">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editDefinitives">
+                                        <label class="custom-control-label" for="editDefinitives">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexDefinitives">
+                                        <label class="custom-control-label" for="deindexDefinitives">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Temporaires</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewTemporaries">
+                                        <label class="custom-control-label" for="viewTemporaries">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addTemporaries">
+                                        <label class="custom-control-label" for="addTemporaries">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editTemporaries">
+                                        <label class="custom-control-label" for="editTemporaries">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexTemporaries">
+                                        <label class="custom-control-label" for="deindexTemporaries">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Cautions</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewBonds">
+                                        <label class="custom-control-label" for="viewBonds">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addBonds">
+                                        <label class="custom-control-label" for="addBonds">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editBonds">
+                                        <label class="custom-control-label" for="editBonds">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexBonds">
+                                        <label class="custom-control-label" for="deindexBonds">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Ventes</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewSolds">
+                                        <label class="custom-control-label" for="viewSolds">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addSolds">
+                                        <label class="custom-control-label" for="addSolds">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editSolds">
+                                        <label class="custom-control-label" for="editSolds">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexSolds">
+                                        <label class="custom-control-label" for="deindexSolds">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Membres</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewMembers">
+                                        <label class="custom-control-label" for="viewMembers">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addMembers">
+                                        <label class="custom-control-label" for="addMembers">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editMembers">
+                                        <label class="custom-control-label" for="editMembers">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="disableMembers">
+                                        <label class="custom-control-label" for="disableMembers">Désactiver</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Véhicules</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewVehicles">
+                                        <label class="custom-control-label" for="viewVehicles">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addVehicles">
+                                        <label class="custom-control-label" for="addVehicles">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editVehicles">
+                                        <label class="custom-control-label" for="editVehicles">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexVehicles">
+                                        <label class="custom-control-label" for="deindexVehicles">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Concessionnaire</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewProprietarized">
+                                        <label class="custom-control-label" for="viewProprietarized">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addProprietarized">
+                                        <label class="custom-control-label" for="addProprietarized">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Trésorerie</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewTreasury">
+                                        <label class="custom-control-label" for="viewTreasury">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Statistiques</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewStats" checked>
+                                        <label class="custom-control-label" for="viewStats">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-success">Ajouter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END ADD MEMBER MODAL -->
+
+        <!-- BEGIN EDIT MEMBER MODAL -->
+        <div class="modal fade" id="editMemberModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Éditer <samp>marethyun</samp> (Mare Ethnicus) </h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="username">Nom d'utilisateur</label>
+                                        <input class="form-control" type="text" name="username" placeholder="Pseudo" value="marethyun">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="first">Prénom en jeu</label>
+                                        <input class="form-control" type="text" name="first" placeholder="John" value="Mare">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="last">Nom en jeu</label>
+                                        <input class="form-control" type="text" name="last" placeholder="Doe" value="Ethnicus">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <h2 class="h5 mb-4">Permissions</h2>
+                        <form>
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="permissions">Permissions</label>
+                                        <input class="form-control" type="text" name="permissions" placeholder="c8c88003">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <label for="admin">Admin</label>
+                                    <button name="admin" class="form-control btn btn-secondary" type="button">ffffffff</button>
+                                </div>
+                                <div class="col">
+                                    <label for="experimented">Expérimenté</label>
+                                    <button name="experimented" class="form-control btn btn-secondary" type="button">fffff00f</button>
+                                </div>
+                                <div class="col">
+                                    <label for="novice">Novice</label>
+                                    <button name="novice" class="form-control btn btn-secondary" type="button">c8c88003</button>
+                                </div>
+                                <div class="col">
+                                    <label for="gendarme">Gendarme</label>
+                                    <button name="gendarme" class="form-control btn btn-secondary" type="button">08800080</button>
+                                </div>
+                                <div class="col">
+                                    <label for="seeall">Voir tout</label>
+                                    <button name="seeall" class="form-control btn btn-secondary" type="button">8888888b</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Fourrière</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewPound">
+                                        <label class="custom-control-label" for="viewPound">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addPound">
+                                        <label class="custom-control-label" for="addPound">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editPound">
+                                        <label class="custom-control-label" for="editPound">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexPound">
+                                        <label class="custom-control-label" for="deindexPound">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Définitives</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewDefinitives">
+                                        <label class="custom-control-label" for="viewDefinitives">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addDefinitives">
+                                        <label class="custom-control-label" for="addDefinitives">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editDefinitives">
+                                        <label class="custom-control-label" for="editDefinitives">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexDefinitives">
+                                        <label class="custom-control-label" for="deindexDefinitives">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Temporaires</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewTemporaries">
+                                        <label class="custom-control-label" for="viewTemporaries">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addTemporaries">
+                                        <label class="custom-control-label" for="addTemporaries">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editTemporaries">
+                                        <label class="custom-control-label" for="editTemporaries">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexTemporaries">
+                                        <label class="custom-control-label" for="deindexTemporaries">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Cautions</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewBonds">
+                                        <label class="custom-control-label" for="viewBonds">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addBonds">
+                                        <label class="custom-control-label" for="addBonds">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editBonds">
+                                        <label class="custom-control-label" for="editBonds">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexBonds">
+                                        <label class="custom-control-label" for="deindexBonds">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Ventes</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewSolds">
+                                        <label class="custom-control-label" for="viewSolds">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addSolds">
+                                        <label class="custom-control-label" for="addSolds">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editSolds">
+                                        <label class="custom-control-label" for="editSolds">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexSolds">
+                                        <label class="custom-control-label" for="deindexSolds">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Membres</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewMembers">
+                                        <label class="custom-control-label" for="viewMembers">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addMembers">
+                                        <label class="custom-control-label" for="addMembers">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editMembers">
+                                        <label class="custom-control-label" for="editMembers">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="disableMembers">
+                                        <label class="custom-control-label" for="disableMembers">Désactiver</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Véhicules</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewVehicles">
+                                        <label class="custom-control-label" for="viewVehicles">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addVehicles">
+                                        <label class="custom-control-label" for="addVehicles">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="editVehicles">
+                                        <label class="custom-control-label" for="editVehicles">Éditer</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="deindexVehicles">
+                                        <label class="custom-control-label" for="deindexVehicles">Désindexer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Concessionnaire</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewProprietarized">
+                                        <label class="custom-control-label" for="viewProprietarized">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="addProprietarized">
+                                        <label class="custom-control-label" for="addProprietarized">Ajouter</label>
+                                    </div>
+                                </div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Trésorerie</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewTreasury">
+                                        <label class="custom-control-label" for="viewTreasury">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <p>Statistiques</p>
+                                </div>
+                                <div class="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="viewStats" checked>
+                                        <label class="custom-control-label" for="viewStats">Voir</label>
+                                    </div>
+                                </div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                                <div class="col">-</div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary">Éditer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END EDIT MEMBER MODAL -->
+
+        <!-- BEGIN RESET PASSWORD MODAL -->
+        <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Réinitialiser le mot de passe de marethyun (Mare Ethnicus)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir réinitialiser ce mot de passe ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-warning">Réinitialiser</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END RESET PASSWORD MODAL -->
+
+        <!-- BEGIN ENABLE MODAL -->
+        <div class="modal fade" id="enableModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Activer <samp>pelegrino</samp> (Jean Pelegrino)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir activer cet utilisateur ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-success">Activer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END ENABLE MODAL -->
+
+        <!-- BEGIN DISABLE MODAL -->
+        <div class="modal fade" id="disableModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="h5 modal-title">Désactiver <samp>marethyun</samp> (Mare Ethnicus)</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Êtes-vous certain(e) de vouloir désactiver cet utilisateur ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-danger">Désactiver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END DISABLE MODAL -->
+
+        <!-- BEGIN FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">Copyright (c) 2019 - <a href="#">Marethyun</a></span>
+            </div>
+        </footer>
+        <!-- END FOOTER -->
+    </body>
+</html>

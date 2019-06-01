@@ -91,9 +91,32 @@ TODO editImmTempModal PUT /temporaires
     data-comment
     data-duration
 
-TODO deindexImmTempModal
+TODO deindexImmTempModal DELETE /teporaires
     data-vehicle
     data-owner
     data-plate: important (clef primaire)
 
-    
+addMemberModal POST /membres
+
+editMemberModal PUT /membres
+    data-memberid: clef primaire
+    data-username: username
+    data-resetting: true or false (is his password resetting)
+    data-player: Mare;Ethnicus
+    data-perms: ffffffff
+    data-disabled: true or false (is the accound disabled)
+
+resetPasswordModal PUT /membres
+    data-memberid
+    data-username
+
+enableModal PUT /membres
+    data-memberid
+    data-username
+
+disableModal PUT /membres
+    data-memberid
+    data-username
+
+TODO addVehicleModal
+    data-vehicle
